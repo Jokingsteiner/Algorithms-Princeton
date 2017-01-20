@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="KdTree.java" package="" timestamp="04-Jan-2017 21:34:21">
+        <select from="11306" to="11306"/>
+        <scroll column="5808" row="0"/>
+      </file>
+      <file name="KdTreeVisualizer.java" package="" timestamp="14-Jul-2016 23:33:56">
+        <select from="11306" to="11306"/>
+        <scroll column="5808" row="0"/>
+      </file>
+      <file name="NearestNeighborVisualizer.java" package="" timestamp="14-Jul-2016 23:35:26">
+        <select from="11306" to="11306"/>
+        <scroll column="5808" row="0"/>
+      </file>
+      <file name="RangeSearchVisualizer.java" package="" timestamp="14-Jul-2016 23:36:42">
+        <select from="11306" to="11306"/>
+        <scroll column="5808" row="0"/>
+      </file>
+      <file name="PointSET.java" package="" timestamp="04-Jan-2017 20:54:01">
+        <select from="11306" to="11306"/>
+        <scroll column="5808" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="C:/Users/cjk98/algs4/algs4.jar"/>
+      <file absolute="false" name="C:/Users/cjk98/algs4/drjava.jar"/>
+      <file absolute="false" name="C:/Users/cjk98/algs4/stdlib.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

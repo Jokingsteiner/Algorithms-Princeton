@@ -1,0 +1,11 @@
+public class Test{
+    void eat(){System.out.println("animal?is?eating...");}
+}
+public class Dog extends Test{??
+    void?eat(){System.out.println("dog?is?eating...");}??
+        
+        public static void main(String?args[]){??
+        Test a=new?Dog();??
+            a.eat();??
+    }??
+}??

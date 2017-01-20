@@ -1,0 +1,60 @@
+/*************************************************************************
+ *  Compilation:  javac FastCollinearPoints.java
+ *  Execution:    none
+ *  Dependencies: FastCollinearPoints.java
+ *
+ *************************************************************************/
+import java.util.Arrays;
+import java.util.ArrayList;
+
+public class FastCollinearPoints {
+    private LineSegment segments[];
+    public FastCollinearPoints(Point[] points) {    // finds all line segments containing 4 points
+        exceptionHandler(points);
+        Point[] pointsCopy = Arrays.copyOf(points, points.length);
+        Arrays.sort(pointsCopy);
+        ArrayList<LineSegment> lines = new ArrayList<LineSegment>();
+        for (int i = 0; i < pointsCopy.length - 3; i++) {
+            Point p = pointsCopy[i];
+            for (int j = i + 1; j < pointsCopy.length - 2; j++) {
+                Point q = pointsCopy[j];
+                double pq = p.slopeTo(q);
+                for (int m = j + 1; m < pointsCopy.length - 1; m++) {
+                    Point r = pointsCopy[m];
+                    double pr = p.slopeTo(r);
+                    if (pq == pr) {
+                        for (int n = m + 1; n < pointsCopy.length; n++) {
+                            Point s = pointsCopy[n];
+                            double ps = p.slopeTo(s);
+                            if (pq == ps) {
+                                LineSegment line = new LineSegment(p, s);
+                                lines.add(line);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        segments = lines.toArray(new LineSegment[lines.size()]);
+    }
+    public int numberOfSegments() {       // the number of line segments
+        return segments.length;
+    }
+    public LineSegment[] segments() {                // the line segments
+        return Arrays.copyOf(segments, numberOfSegments());
+    }
+    
+    public void exceptionHandler(Point[] points){    //Exception handler
+        if (points == null)
+            throw new java.lang.NullPointerException ("input point is null");
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i] == null)
+                throw new java.lang.NullPointerException ("input point is null");
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i].compareTo(points[j]) == 0) {
+                    throw new IllegalArgumentException("Duplicated entries in given points.");
+                }
+            }
+        }
+    }
+}

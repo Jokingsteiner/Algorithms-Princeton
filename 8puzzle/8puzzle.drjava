@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Solver_pvoznenko.java" package="" timestamp="28-Dec-2016 20:38:07">
+        <select from="0" to="0"/>
+        <scroll column="1890" row="0"/>
+      </file>
+      <file name="PuzzleChecker.java" package="" timestamp="28-Dec-2016 10:58:10">
+        <select from="0" to="0"/>
+        <scroll column="1890" row="0"/>
+      </file>
+      <file name="Board.java" package="" timestamp="28-Dec-2016 21:03:09">
+        <select from="0" to="0"/>
+        <scroll column="1890" row="0"/>
+      </file>
+      <file name="Solver.java" package="" timestamp="28-Dec-2016 21:28:23">
+        <select from="0" to="0"/>
+        <scroll column="1890" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="true" name="C:/Users/cjk98/algs4/algs4.jar"/>
+      <file absolute="true" name="C:/Users/cjk98/algs4/drjava.jar"/>
+      <file absolute="true" name="C:/Users/cjk98/algs4/stdlib.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

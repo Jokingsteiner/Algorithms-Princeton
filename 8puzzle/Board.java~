@@ -1,0 +1,62 @@
+public class Board {
+    private int N;
+    private int board[][];
+    public Board(int[][] blocks) {           // construct a board from an n-by-n array of blocks
+                                             // (where blocks[i][j] = block in row i, column j)
+        N = blocks.length;
+        board = new int[blocks.length][blocks.length];
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < N; j++){
+                board[i][j] = blocks[i][j];
+            }
+        }
+    }
+     
+    public int dimension() {                // board dimension n
+        return N;
+    }
+    public int hamming() {                  // number of blocks out of place
+        int numOfWrongBlock = 0;
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < N; j++){
+                if (!(i == N - 1 && j == N - 1))
+                    if (board[i][j] != i * N + j + 1)
+                    
+                board[i][j] = blocks[i][j];
+            }
+        }
+    }
+    public int manhattan() {                 // sum of Manhattan distances between blocks and goal
+        return 0;
+    }
+    public boolean isGoal() {               // is this board the goal board?
+        return (hamming() == 0);
+    }
+    public Board twin() {                    // a board that is obtained by exchanging any pair of blocks
+        return this;
+    }
+    public boolean equals(Object y) {        // does this board equal y?
+        return true;
+    }
+    //public Iterable<Board> neighbors() {     // all neighboring boards
+    //}
+    public String toString() {               // string representation of this board (in the output format specified below)
+        StringBuilder s = new StringBuilder();
+        s.append(N + "\n");
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                s.append(String.format("%2d ", board[i][j]));
+            }
+            s.append("\n");
+        }
+        return s.toString();
+    }
+
+    public static void main(String[] args) { // unit tests (not graded)
+        int array[][] = new int[5][5];
+        for (int i = 0; i < 5; i++)
+            for (int j = 0; j < 5; j++)
+            array[i][j] = i * 5 + j;
+        Board testObject = new Board(array);        
+    }
+}

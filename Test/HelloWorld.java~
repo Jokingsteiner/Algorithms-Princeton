@@ -1,0 +1,24 @@
+public class HelloWorld {
+    public char[] a = new char[10];
+    public static final char OPENMASK = 0x01;
+    public static final char TOPMASK = 0x04;
+    public static final char BOTTOMMASK = 0x02;
+    public HelloWorld () {
+        for (int i = 0; i < 10; i++)
+            a[i] = 0x00;    
+    }
+    public static void main (String[] args) {
+        int[][]temp = new int[8][7];
+        for(int i=0;i<5;i++)
+            for(int j=0;j<5;j++) temp[i][j]=65;
+        System.out.println("Hello, World!");
+        HelloWorld testObject = new HelloWorld();
+        System.out.println(temp.length);
+        //testObject.a[0] |= HelloWorld.TOPMASK;
+        //testObject.a[0] |= HelloWorld.BOTTOMMASK;
+        
+        //System.out.println(Integer.toBinaryString(testObject.a[0]));
+        //System.out.println((testObject.a[0] & OPENMASK)!= 0);
+        
+    }
+}

@@ -1,0 +1,85 @@
+/*************************************************************************
+ *  Compilation:  javac FastCollinearPoints.java
+ *  Execution:    none
+ *  Dependencies: FastCollinearPoints.java
+ *
+ *************************************************************************/
+import java.util.Arrays;
+import java.util.ArrayList;
+
+public class FastCollinearPoints {
+    private LineSegment segments[];
+    public FastCollinearPoints(Point[] points) {    // finds all line segments containing 4 points
+        exceptionHandler(points);
+        ArrayList<LineSegment> lines = new ArrayList<LineSegment>();
+        Point[] pointsCopy = new Point[points.length - 1];
+        for (int i = 0; i < points.length; i++){
+            Point startPoint = points[i]; //iterate from point i
+            //create pintsCopy without startPoint
+            System.arraycopy(points, 0, pointsCopy, 0, i);
+            System.arraycopy(points, i + 1, pointsCopy, i, pointsCopy.length - i);
+            //sort the pointsCopy by SLOPE_ORDER comparator
+            Arrays.sort(pointsCopy, startPoint.slopeOrder());
+            //parameters for finding collinear pair
+            boolean slopeEqual;
+            int start = 0, end = 1;
+            while (end < pointsCopy.length) {
+                slopeEqual = startPoint.slopeTo(pointsCopy[end]) == startPoint.slopeTo(pointsCopy[end - 1]);
+                if (slopeEqual)
+                    end++;
+                if (!slopeEqual || end == pointsCopy.length){
+                    if (end - start >= 3){ //3 means 4 point in line
+                        Point[] segment = new Point[end - start + 1];
+                        segment[segment.length - 1] = startPoint;
+                        for (int k = 0; k < segment.length - 1; k++) {
+                            segment[k] = pointsCopy[start + k];
+                        }
+                        Arrays.sort(segment); //sort by y-coordinate and tie by x
+                        LineSegment line = new LineSegment(segment[0], segment[segment.length - 1]);
+                        boolean added = false;
+                        for (LineSegment l : lines) {
+                            if (l.toString().equals(line.toString())) {
+                                added = true;
+                                break;
+                            }
+                        }
+                        if (!added) {
+                            lines.add(line);
+                        }
+                    }
+                    start = end;
+                    end = start + 1;
+                }
+            }
+        }
+        segments = lines.toArray(new LineSegment[lines.size()]);
+    }
+    public int numberOfSegments() {       // the number of line segments
+        return segments.length;
+    }
+    public LineSegment[] segments() {                // the line segments
+        return Arrays.copyOf(segments, numberOfSegments());
+    }
+    
+    private void exceptionHandler(Point[] points){    //Exception handler
+        Arrays.sort(points);
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i].compareTo(points[i + 1]) == 0) {
+                throw new IllegalArgumentException();
+            }
+        }
+        /*
+        if (points == null)
+            throw new java.lang.NullPointerException ("input point is null");
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i] == null)
+                throw new java.lang.NullPointerException ("input point is null");
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[i].compareTo(points[j]) == 0) {
+                    throw new IllegalArgumentException("Duplicated entries in given points.");
+                }
+            }
+        }
+        */
+    }
+}

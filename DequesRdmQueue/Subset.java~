@@ -1,0 +1,32 @@
+/*----------------------------------------------------------------
+ *  Author:        Junkai Cai
+ *  Written:       12/18/2016
+ *  Last updated:  12/18/2016
+ *
+ *  Compilation:   javac Subset.java
+ *  Execution:     java Subset
+ *  
+ *----------------------------------------------------------------*/
+import edu.princeton.cs.algs4.StdIn;
+
+public class Subset {
+    /**
+    *  Constructor  
+    */
+    public Subset() {                
+
+    }
+    
+    public static void main(String[] args) {
+        int k = Integer.parseInt(args[0]);
+        RandomizedQueue<String> randomizedQueue = new RandomizedQueue<String>();        
+        
+        while (!StdIn.isEmpty())
+            randomizedQueue.enqueue(StdIn.readString());
+        
+        while (k > 0) {
+            StdOut.println(randomizedQueue.dequeue());
+            k--;
+        }            
+    }
+}

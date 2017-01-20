@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Point.java" package="" timestamp="25-Dec-2016 23:19:36">
+        <select from="2247" to="2247"/>
+        <scroll column="1285" row="0"/>
+      </file>
+      <file name="LineSegment.java" package="" timestamp="25-Dec-2016 17:35:52">
+        <select from="2247" to="2247"/>
+        <scroll column="1285" row="0"/>
+      </file>
+      <file name="Client.java" package="" timestamp="25-Dec-2016 19:50:49">
+        <select from="2247" to="2247"/>
+        <scroll column="1285" row="0"/>
+      </file>
+      <file name="BruteCollinearPoints.java" package="" timestamp="25-Dec-2016 21:51:06">
+        <select from="2247" to="2247"/>
+        <scroll column="1285" row="0"/>
+      </file>
+      <file name="FastCollinearPoints.java" package="" timestamp="25-Dec-2016 23:18:20">
+        <select from="2247" to="2247"/>
+        <scroll column="1285" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="C:/Users/cjk98/algs4/algs4.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

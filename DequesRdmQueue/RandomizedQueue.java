@@ -1,0 +1,180 @@
+/*----------------------------------------------------------------
+ *  Author:        Junkai Cai
+ *  Written:       12/18/2016
+ *  Last updated:  12/18/2016
+ *
+ *  Compilation:   javac RandomizedQueue.java
+ *  Execution:     java RandomizedQueue
+ *  
+ *----------------------------------------------------------------*/
+import java.util.Iterator;
+import edu.princeton.cs.algs4.StdRandom;
+
+public class RandomizedQueue<Item> implements Iterable<Item> {
+    private Item[] queue;
+    private int N;
+    private int size;
+    /**
+    *  Constructor  
+    *  construct an empty randomizedqueue
+    *   
+    */
+    public RandomizedQueue() { 
+        N = 0;
+        size = 1;
+        queue = (Item[]) new Object[size];
+    }
+  
+    /**
+    *  isEmpty()  
+    *  is the queue empty?
+    *   
+    */
+    public boolean isEmpty() {
+        return N == 0;
+    }
+    
+    /**
+    *  size()  
+    *  return the number of items on the queue
+    *   
+    */
+    public int size() {
+        return this.N;
+    }
+
+    /**
+    *  enqueue(Item item) 
+    *  add the item
+    *   
+    */      
+    public void enqueue(Item item) {
+        if (item == null) {
+            throw new java.lang.NullPointerException("Cannot add null items");
+        }
+        if (N >= size)
+            doubling();
+        queue[N++] = item;
+    }
+        
+    /**
+    *  doubling()
+    *  doubling the array
+    *   
+    */
+    private void doubling() {
+        size *= 2;
+        Item[] newQueue = (Item[]) new Object[size];
+        int index = 0;
+        for (Item i : queue)
+            newQueue[index++] = i;
+        queue = newQueue;
+    }
+    
+    /**
+    *  dequeue()
+    *  remove and return a random item
+    *   
+    */
+    public Item dequeue() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException("Queue is empty");    
+        int randomIndex = StdRandom.uniform(N);
+        Item item = queue[randomIndex];
+        queue[randomIndex] = queue[--N];
+        queue[N] = null;
+        if ((N > 0) && N < (size / 4))
+            halving();
+        return item;
+    }
+    
+    /**
+    *  halving()
+    *  halve the queue
+    *   
+    */
+    private void halving() {
+        size /= 2;
+        Item[] newQueue = (Item[]) new Object[size];
+        int index = 0;
+        for (int i = 0; i < size; i++) {
+            newQueue[index++] = queue[i];
+        }
+        queue = newQueue;
+    }
+    
+    /**
+    *  sample() 
+    *  return (but do not remove) a random item
+    *   
+    */
+    public Item sample() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
+        return queue[StdRandom.uniform(N)];
+    }
+    
+    /**
+    *  iterator() 
+    *  return an independent iterator over items in random order
+    *   
+    */
+    public Iterator<Item> iterator() {
+          return new RdmQueueIterator();
+    }
+    
+    private class RdmQueueIterator implements Iterator<Item> {
+        private int reamainElements;
+        private int[] iteratorIndex;
+        public RdmQueueIterator() {
+            reamainElements = N;
+//            iteratorList = queue;
+            iteratorIndex = new int[N];
+            for (int i = 0; i < N; i++)
+                iteratorIndex[i] = i;
+            StdRandom.shuffle(iteratorIndex);
+        }        
+        
+        @Override
+        public boolean hasNext() {
+            return (reamainElements != 0);
+        }
+        
+        @Override
+        public Item next() {
+            if (!hasNext()) {
+                throw new java.util.NoSuchElementException("No more items to iterate");
+            }
+            return queue[iteratorIndex[--reamainElements]];
+        }
+        
+        @Override
+        public void remove() {
+            throw new java.lang.UnsupportedOperationException("remove function not supported");
+        }
+    }
+    
+    public static void main(String[] args) {
+        /*
+        RandomizedQueue<Integer> rqueue = new RandomizedQueue<Integer>();
+        rqueue.enqueue(1);
+        rqueue.enqueue(2);
+        rqueue.enqueue(3);
+        rqueue.dequeue();
+        rqueue.enqueue(4);
+        rqueue.enqueue(5);
+        rqueue.dequeue();
+        rqueue.enqueue(6);
+        rqueue.dequeue();
+        rqueue.enqueue(7);
+        rqueue.enqueue(8);
+        rqueue.dequeue();
+        rqueue.dequeue();
+        Iterator<Integer> it = rqueue.iterator();
+        while (it.hasNext()) {
+            int elt = it.next();
+            System.out.println(elt + " ");
+        }
+        */
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="RandomizedQueue.java" package="" timestamp="18-Dec-2016 11:39:43">
+        <select from="990" to="990"/>
+        <scroll column="372" row="0"/>
+      </file>
+      <file name="ResizingArrayStack.java" package="" timestamp="17-Dec-2016 21:05:32">
+        <select from="990" to="990"/>
+        <scroll column="372" row="0"/>
+      </file>
+      <file name="LinkedStack.java" package="" timestamp="17-Dec-2016 21:05:58">
+        <select from="990" to="990"/>
+        <scroll column="372" row="0"/>
+      </file>
+      <file name="Subset.java" package="" timestamp="18-Dec-2016 11:00:48">
+        <select from="990" to="990"/>
+        <scroll column="372" row="0"/>
+      </file>
+      <file name="Deque.java" package="" timestamp="18-Dec-2016 11:33:39">
+        <select from="990" to="990"/>
+        <scroll column="372" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="true" name="C:/Users/cjk98/algs4/algs4.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

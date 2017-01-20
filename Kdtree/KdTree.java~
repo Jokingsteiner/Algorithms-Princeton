@@ -1,0 +1,76 @@
+import edu.princeton.cs.algs4.Point2D;
+import edu.princeton.cs.algs4.RectHV;
+import java.util.ArrayList;
+
+public class PointSET {
+    private SET<Point2D> pointsSet;
+    public PointSET() {                               // construct an empty set of points 
+        pointsSet = new SET<Point2D>();
+    }
+    
+    public boolean isEmpty() {                      // is the set empty? 
+        return pointsSet.isEmpty();
+    }
+    
+    public int size() {                         // number of points in the set 
+        return pointsSet.size();
+    }
+    
+    public void insert(Point2D p) {              // add the point to the set (if it is not already in the set)
+        if (p == null)
+            throw new java.lang.NullPointerException("input point is null");
+        if (!pointsSet.contains(p)){
+            pointsSet.add(p);
+        }
+    }
+    
+    public boolean contains(Point2D p) {            // does the set contain point p? 
+        if (p == null)
+            throw new java.lang.NullPointerException("input point is null");
+        return pointsSet.contains(p);
+    }
+    
+    public void draw() {                         // draw all points to standard draw 
+        //set pen before drawing points
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.setPenRadius(0.01);
+        for (Point2D point : pointsSet) {
+            point.draw();
+        }
+        /*
+        //set pen before drawing (horizontal) splitting line
+        StdDraw.setPenColor(StdDraw.BLUE);
+        //set pen before drawing (vertical) splitting line
+        StdDraw.setPenColor(StdDraw.RED);
+        StdDraw.setPenRadius();
+        */
+    }
+    
+       
+    public Iterable<Point2D> range(RectHV rect) {             // all points that are inside the rectangle 
+        ArrayList<Point2D> rangeResult = new ArrayList<Point2D>();
+        for (Point2D point : pointsSet){
+            if (rect.contains(point)){
+                rangeResult.add(point);
+            }
+        }
+        return rangeResult;
+    }
+    public Point2D nearest(Point2D p) {            // a nearest neighbor in the set to point p; null if the set is empty 
+        if (p == null)
+            throw new java.lang.NullPointerException("input point is null");
+        Point2D nearestPoint = null;
+        double minDistance = Double.POSITIVE_INFINITY;
+        for (Point2D point : pointsSet){
+            double tempDistance = p.distanceSquaredTo(point);
+            if (Double.compare(tempDistance, minDistance) < 0){ //this is a BETTER habbit!!
+                minDistance = tempDistance;
+                nearestPoint = point;
+            }
+        }
+        return nearestPoint;
+    }
+    
+    public static void main(String[] args) {                 // unit testing of the methods (optional) 
+    }
+}
